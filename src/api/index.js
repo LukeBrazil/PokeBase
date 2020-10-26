@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const url = 'http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=LukeBraz-pok-PRD-0e6527e18-b92fd327&GLOBAL-ID=EBAY-US&keywords=1st+edition+base+set+pokemon&paginationInput.entriesPerPage=3';
+const url = 'https://pokeapi.co/api/v2/pokemon';
 
-export const fetchData = async () => {
+export const fetchAllPokemon = async () => {
 
     try {
-        const { data: {confirmed, recovered, deaths, lastUpdate} } = await axios.get(changeableUrl);
+        const { data } = await axios.get(url);
 
-        return { confirmed, recovered, deaths, lastUpdate };
+        return { data };
 
     } catch (error) {
         console.log(error)
