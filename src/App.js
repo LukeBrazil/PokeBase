@@ -1,28 +1,66 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { fetchAllPokemon } from './api'
-export default function App() {
+import React, { useState, useEffect } from 'react';
+import { getAllPokemon, getPokemon } from './api/index';
+import Card from './components/Card/Card';
+import './App.css';
+
+function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const [nextPage, setNextPage] = useState('');
-  const [previousPage, setPreviousPage] = useState('');
-  
-  useEffect(() => {
-    async function getAllPokemon() {
-      let response = await fetchAllPokemon();
-      setNextPage(response.next)
-      setPreviousPage(response.previous)
-      setPokemonData(response.data.results); 
-    }
-    getAllPokemon();
-  })
+  const [prevPage, setPrevPage] = useState('');
+  const [loading, setLoading] = useState(true);
+  const mainUrl = "https://pokeapi.co/api/v2/pokemon";
 
+  useEffect(() => {
+    async function fetchData() {
+      let response = await getAllPokemon(mainUrl);
+      setNextPage(response.next)
+      setPrevPage(response.previous);
+      await loadingPokemon(response.results)
+      setLoading(false)
+    }
+    fetchData()
+  }, [])
+
+  const fetchNext = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextPage);
+    await loadingPokemon(data.results)
+    setNextPage(data.next);
+    setPrevPage(data.previous);
+    setLoading(false);
+  }
+  const fetchPrevious = async () => {
+    if (!prevPage) return;
+    setLoading(true);
+    let data = await getAllPokemon(prevPage);
+    await loadingPokemon(data.results)
+    setNextPage(data.next);
+    setPrevPage(data.previous);
+    setLoading(false);
+  }
+
+  const loadingPokemon = async (data) => {
+    let singlePokemon = await Promise.all(data.map(async pokemon => {
+      let pokemonRecord = await getPokemon(pokemon.url);
+      return pokemonRecord
+    }))
+
+    setPokemonData(singlePokemon)
+  }
   return (
     <div>
+    { loading ? <h1>Loading...</h1> : (
+      <>
+      <div><button onClick={fetchPrevious}>Previous</button></div>
+      <div><button onClick={fetchNext}>Next</button></div>
       {pokemonData.map((pokemon, i) => {
-        return <ul>
-          <li key={i}>{pokemon.name}</li>
-        </ul>
+        return <Card key={i} pokemon={pokemon} />
       })}
-    </div>
-  )
+      </>
+      )}
+      
+      </div>
+  );
 }
+
+export default App;

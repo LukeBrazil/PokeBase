@@ -1,15 +1,20 @@
-import axios from 'axios';
-
-const url = 'https://pokeapi.co/api/v2/pokemon';
-
-export const fetchAllPokemon = async () => {
-
-    try {
-        const { data } = await axios.get(url);
-
-        return { data };
-
-    } catch (error) {
-        console.log(error)
-    }
-}
+export async function getAllPokemon(url) {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          resolve(data);
+        });
+    });
+  }
+  
+  export async function getPokemon(url) {
+      return new Promise((resolve, reject) => {
+          fetch(url)
+          .then(res => res.json())
+          .then(data => {
+              resolve(data);
+          })
+      })
+  }
+  
