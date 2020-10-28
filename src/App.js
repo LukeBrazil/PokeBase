@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPokemon, getPokemon } from './api/index';
 import Card from './components/Card/Card';
+import UiCard from './components/Card/UiCard';
+import MediaCard from './components/Card/MediaCard';
 import './App.css';
+
+// Material Ui
+import Button from '@material-ui/core/Button';
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -39,6 +44,15 @@ function App() {
     setLoading(false);
   }
 
+  const goHome = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(mainUrl);
+    await loadingPokemon(data.results)
+    setNextPage(data.next);
+    setPrevPage(data.previous);
+    setLoading(false);
+  }
+
   const loadingPokemon = async (data) => {
     let singlePokemon = await Promise.all(data.map(async pokemon => {
       let pokemonRecord = await getPokemon(pokemon.url);
@@ -46,16 +60,22 @@ function App() {
     }))
 
     setPokemonData(singlePokemon)
+    console.log(pokemonData)
   }
+
   return (
     <div>
     { loading ? <h1>Loading...</h1> : (
       <>
-      <div><button onClick={fetchPrevious}>Previous</button></div>
-      <div><button onClick={fetchNext}>Next</button></div>
+      <div><Button variant='contained' color='primary' onClick={fetchPrevious}>Previous</Button></div>
+      <div><Button variant='contained' color='secondary' onClick={fetchNext}>Next</Button></div>
+      <div><Button variant='contained' color='default' onClick={goHome}>Home</Button></div>
+      <div className='grid-container'>
       {pokemonData.map((pokemon, i) => {
-        return <Card key={i} pokemon={pokemon} />
+        return <MediaCard key={i} pokemon={pokemon} />
       })}
+      </div>
+
       </>
       )}
       
