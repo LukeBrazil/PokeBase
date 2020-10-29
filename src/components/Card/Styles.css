@@ -1,0 +1,19 @@
+
+.card-name {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    background-color: #222;
+}
+
+/* body {
+    color: #222;
+    background: #fff;
+  }
+  a {
+    color: #0033cc;
+  } */

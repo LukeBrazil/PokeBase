@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import './Styles.css'
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +20,7 @@ export default function MediaCard( { pokemon }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className='card'>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -29,7 +30,7 @@ export default function MediaCard( { pokemon }) {
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {pokemon.name}
-            
+            <p>PokeDex# {pokemon.id}</p>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           {pokemon.types.map(type => {return <div>{type.type.name}</div>})}

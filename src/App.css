@@ -13,6 +13,10 @@
   }
 }
 
+body {
+  background-image: url('/src/components/Card/poke.jpg');
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -43,4 +47,13 @@
   margin: 0 auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 5px 5px 5px;
+  
 }
