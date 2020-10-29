@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/PokeBase/static/css/main.ecc00132.chunk.css",
+    "main.js": "/PokeBase/static/js/main.8a5ef121.chunk.js",
+    "main.js.map": "/PokeBase/static/js/main.8a5ef121.chunk.js.map",
+    "runtime-main.js": "/PokeBase/static/js/runtime-main.6136d9c5.js",
+    "runtime-main.js.map": "/PokeBase/static/js/runtime-main.6136d9c5.js.map",
+    "static/js/2.a8b2cd03.chunk.js": "/PokeBase/static/js/2.a8b2cd03.chunk.js",
+    "static/js/2.a8b2cd03.chunk.js.map": "/PokeBase/static/js/2.a8b2cd03.chunk.js.map",
+    "static/js/3.6ff863e2.chunk.js": "/PokeBase/static/js/3.6ff863e2.chunk.js",
+    "static/js/3.6ff863e2.chunk.js.map": "/PokeBase/static/js/3.6ff863e2.chunk.js.map",
+    "index.html": "/PokeBase/index.html",
+    "static/css/main.ecc00132.chunk.css.map": "/PokeBase/static/css/main.ecc00132.chunk.css.map",
+    "static/js/2.a8b2cd03.chunk.js.LICENSE.txt": "/PokeBase/static/js/2.a8b2cd03.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/PokeBase/static/media/poke.cd591821.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6136d9c5.js",
+    "static/js/2.a8b2cd03.chunk.js",
+    "static/css/main.ecc00132.chunk.css",
+    "static/js/main.8a5ef121.chunk.js"
+  ]
+}
