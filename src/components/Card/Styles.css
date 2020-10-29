@@ -5,9 +5,8 @@
 }
 
 .card {
-    display: flex;
-    justify-content: center;
-    background-color: #222;
+    color: aliceblue;
+    background-color: #666699;
 }
 
 /* body {

@@ -27,7 +27,7 @@ export default function MediaCard( { pokemon }) {
           image={pokemon.sprites.front_default}
           title="Contemplative Reptile"
         />
-        <CardContent>
+        <CardContent className='card'>
           <Typography gutterBottom variant="h5" component="h2">
             {pokemon.name}
             <p>Id# {pokemon.id}</p>
