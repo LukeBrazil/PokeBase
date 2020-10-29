@@ -13,8 +13,7 @@ function App() {
   const [prevPage, setPrevPage] = useState('');
   const [loading, setLoading] = useState(true);
   const mainUrl = "https://pokeapi.co/api/v2/pokemon";
-  const testUrl = "https://pokeapi.co/api/v2/pokemon/{152}"
-
+  
   useEffect(() => {
     async function fetchData() {
       let response = await getAllPokemon(mainUrl);

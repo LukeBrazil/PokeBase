@@ -30,7 +30,7 @@ export default function MediaCard( { pokemon }) {
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {pokemon.name}
-            <p>PokeDex# {pokemon.id}</p>
+            <p>Id# {pokemon.id}</p>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
           {pokemon.types.map(type => {return <div>{type.type.name}</div>})}
